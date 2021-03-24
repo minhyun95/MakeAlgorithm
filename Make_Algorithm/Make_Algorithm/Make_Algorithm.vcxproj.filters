@@ -16,6 +16,9 @@
     <Filter Include="소스 파일\01. 알고리즘 구현">
       <UniqueIdentifier>{97e932d0-47e1-4c76-b85c-459aa54901ea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\02. 자료구조 구현">
+      <UniqueIdentifier>{bbb075a5-3761-49c2-b1b0-e5702a7f2dc6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BubbleSort.cpp">
@@ -24,5 +27,13 @@
     <ClCompile Include="QuickSort.cpp">
       <Filter>소스 파일\01. 알고리즘 구현</Filter>
     </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>소스 파일\02. 자료구조 구현</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LinkedList.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

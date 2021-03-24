@@ -6,10 +6,10 @@ void QuickSort(int arr[],int start, int end);
 
 int main()
 {
-	int iArr[7] = { 5,4,3,7,6,2,1 };
-	QuickSort(iArr, 0, 7 - 1);
+	int iArr[5] = { 4,1,5,2,3 };
+	QuickSort(iArr, 0, 5 - 1);
 
-	for (int i = 0; i < 7; i++)
+	for (int i = 0; i < 5; i++)
 	{
 		cout << iArr[i] << " ";
 	}
