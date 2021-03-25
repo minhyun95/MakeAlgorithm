@@ -1,5 +1,5 @@
 #pragma once
-
+#include <iostream>
 #include <assert.h>
 
 template <typename T>
@@ -13,8 +13,8 @@ class ListNode
 private :
 	ListNode()
 	{
-		m_pNext == nullptr;
-		m_pPrev == nullptr;
+		m_pNext = nullptr;
+		m_pPrev = nullptr;
 	}
 	~ListNode()
 	{
@@ -283,6 +283,8 @@ public :
 		}
 	}
 
+	/*
+	똑같은 방식의 sort 지만 보기 어려움.
 	void sort(bool(*pFunc)(const T&, const T&))
 	{
 		for (PNODE pFirst = m_pBegin->m_pNext; pFirst != m_pEnd->m_pPrev; pFirst = pFirst->m_pNext)
@@ -294,6 +296,28 @@ public :
 					T temp = pFirst->m_Data;
 					pFirst->m_Data = pSecond->m_Data;
 					pSecond->m_Data = temp;
+				}
+			}
+		}
+	}
+	*/
+	void sort(bool(*pFunc)(const T&, const T&))
+	{
+		iterator iter;
+		iterator iterEnd = end();
+		--iterEnd;
+		for (iter = begin(); iter != iterEnd; ++iter)
+		{
+			iterator iter1 = iter;
+			++iter1;
+			iterator iter1End = end();
+			for (; iter1 != iter1End; ++iter1)
+			{
+				if (pFunc(*iter, *iter1))
+				{
+					T temp = *iter;
+					*iter = *iter1;
+					*iter1 = temp;
 				}
 			}
 		}
