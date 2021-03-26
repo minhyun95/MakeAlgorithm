@@ -1,8 +1,10 @@
 #pragma once
-
+#include <assert.h>
 template <typename T>
 class VectorNode
 {
+	template <typename T>
+	friend class Vector;
 	template <typename T>
 	friend class Vectoriterator;
 private :
@@ -31,7 +33,7 @@ class Vectoriterator
 	template <typename T>
 	friend class Vector;
 
-private :
+public :
 	Vectoriterator()
 	{
 
@@ -45,28 +47,48 @@ private :
 	typedef VectorNode<T>* PNODE;
 
 private :
-	PNODE m_pNode;
+	PNODE Pos;
 
 public :
 	bool operator ==(const Vectoriterator<T>& iter)
 	{
-		return m_pNode == iter.m_pNode;
+		return Pos->m_Data == iter.Pos->m_Data;
 	}
 
 	bool operator !=(const Vectoriterator<T>& iter)
 	{
-		return m_pNode != iter.m_pNode;
+		return Pos->m_Data != iter.Pos->m_Data;
 	}
 
 	void operator ++()
 	{
-		m_pNode = m_pNode + sizeof(T);
+		Pos = Pos + 1;
 	}
+
+	void operator --()
+	{
+		Pos = Pos - 1;
+	}
+
+	T operator *()
+	{
+		return Pos->m_Data;
+	}
+
+	unsigned int operator -(const Vectoriterator<T>& iter)
+	{
+		return Pos->m_iIndex - iter.Pos->m_iIndex;
+	}
+
 };
 
 template <typename T>
 class Vector
 {
+	template <typename T>
+	friend class VectorNode;
+	template <typename T>
+	friend class Vectoriterator;
 public :
 	Vector()
 	{
@@ -76,6 +98,8 @@ public :
 		// 초기화
 		// End와 Begin까지 합쳐서 + 2 만큼 
 		m_pArray = new VectorNode<T>[m_iCapasity + 2];
+		m_pBegin = new VectorNode<T>;
+		m_pBegin->m_iIndex = 0;
 	}
 	Vector(int iSize)
 	{
@@ -92,12 +116,16 @@ public :
 private :
 	typedef VectorNode<T>	NODE;
 	typedef VectorNode<T>*	PNODE;
+
+public :
 	typedef Vectoriterator<T> iterator;
 
 private :
 	PNODE m_pArray;
-	unsigned int	m_iSize;
-	unsigned int	m_iCapasity; // 배열의 총 개수 (2배씩 늘어남)
+	PNODE m_pBegin;
+	PNODE m_pEnd;
+	int	m_iSize;
+	int	m_iCapasity; // 배열의 총 개수 (2배씩 늘어남)
 
 public :
 	void push_back(const T& data)
@@ -111,6 +139,7 @@ public :
 		m_pArray[m_iSize + 1].m_iIndex = m_iSize;
 		++m_iSize;
 	}
+
 	
 	void resize(int iSize)
 	{
@@ -131,12 +160,12 @@ public :
 
 	}
 
-	unsigned int size() const
+	int size() const
 	{
 		return m_iSize;
 	}
 
-	unsigned int capasity() const
+	int capasity() const
 	{
 		return m_iCapasity;
 	}
@@ -149,6 +178,18 @@ public :
 	bool empty()
 	{
 		return m_iSize == 0;
+	}
+
+	void clear()
+	{
+		// 값만 삭제 후 capasity는 그대로 두고
+		// m_iSize 만 0으로 초기화한다.
+		for (int i = 0; i < m_iSize; i++)
+		{
+			m_pArray[i + 1].m_Data = 0;
+		}
+
+		m_iSize = 0;
 	}
 
 	T operator [](int idx) const
@@ -165,4 +206,114 @@ public :
 		m_iCapasity = iSize;
 		m_iSize = 0;
 	}
+
+	void assign(int iSize, const T& data)
+	{
+		reserve(iSize);
+		for (int i = 0; i < iSize; ++i)
+		{
+			push_back(data);
+		}
+	}
+
+	T at(int iSize) const
+	{
+		// [] 와의 차이점은 범위를 점검해서.
+		if (size() >= iSize + 1)
+		{
+			return m_pArray[iSize + 1].m_Data;
+		}
+		else
+		{
+			assert(false);
+		}
+		return m_pBegin->m_Data;
+	}
+
+	T back()
+	{
+		if (empty())
+			assert(false);
+
+		return m_pArray[m_iSize].m_Data;
+	}
+
+	T front()
+	{
+		if (empty())
+			assert(false);
+
+		return m_pArray[1].m_Data;
+	}
+
+	int index(int idx)
+	{
+		return m_pArray[idx + 1].m_iIndex;
+	}
+
+	void push_front(const T& data)
+	{
+		if (full())
+			resize(m_iSize * 2);
+
+		for (int i = m_iSize + 1; i > 1; --i)
+		{
+			m_pArray[i].m_Data = m_pArray[i - 1].m_Data;
+		}
+
+		m_pArray[1].m_Data = data;
+		m_pArray[1].m_iIndex = 1;
+
+		++m_iSize;
+	}
+
+	void pop_back()
+	{
+		if (empty())
+		{
+			assert(false);
+		}
+		m_pArray[m_iSize].m_Data = 0;
+		m_pArray[m_iSize].m_iIndex = 0;
+		--m_iSize;
+	}
+
+	void pop_front()
+	{
+		erase(0);
+	}
+
+	void erase(int num)
+	{
+		if (empty())
+		{
+			assert(false);
+		}
+		else
+		{
+			for (int i = num + 1; i < m_iSize; i++)
+			{
+				m_pArray[i - 1].m_Data = m_pArray[i].m_Data;
+			}
+			--m_iSize;
+		}
+		
+	}
+
+
+public :
+	iterator begin()
+	{
+		iterator iter;
+		iter.Pos = &m_pArray[1];
+		return iter;
+	}
+
+	iterator end()
+	{
+		iterator iter;
+		iter.Pos = &m_pArray[m_iSize];
+		return iter;
+	}
+
 };

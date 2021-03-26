@@ -36,9 +36,7 @@ bool StudentSort(const STUDENT& s, const STUDENT& s2)
 void LinkedTest();
 int main()
 {
-	vector<int> a;
-	a.assign;
-	a.at;
+	/*
 	a.back;
 	a.begin;
 	a.capacity;
@@ -63,23 +61,65 @@ int main()
 	a.reserve;
 	a.resize;
 	a.size;
-	a.swap;
+	a.swap*/;
 
 
 	Vector<int> vec;
+	
+	vec.push_back(9);
+	vec.push_front(1);
 
-	vec.reserve(100);
-	for (int i = 0; i < 100; i++)
+	cout << "vec.at(0) : " << vec.at(0) << endl;
+	cout << endl << endl;
+	cout << "size		: " << vec.size() << endl;
+	cout << "capasity	: " << vec.capasity() << endl;
+
+	// 초기화 후 2로 5칸을 만든다.
+	cout << "vec.assign(5,2) - 초기화 후 resize로 5칸을 2로 초기화한다." << endl;
+	vec.assign(5, 2);
+	for (int i = 0; i < vec.size(); i++)
 	{
-		vec.push_back(i);
+		cout << "vec[" << i << "] : " << vec[i] << endl;
 	}
+	cout << "size		: " << vec.size() << endl;
+	cout << "capasity	: " << vec.capasity() << endl;
+	cout << endl << endl;
+
+	cout << "vec.push_back(5); 뒤에 5를 추가" << endl;
+	cout << "vec.push_front(9);  앞에 9를 추가 (vec.size()만큼 이동시켜야함)" << endl;
+	vec.push_back(5);
+	vec.push_front(9);
 
 	for (int i = 0; i < vec.size(); i++)
 	{
-		cout << vec[i] << endl;;
+		cout << "vec[" << i << "] : " << vec[i] << endl;
 	}
-	cout << vec.capasity() << endl;
+	cout << endl << endl;
+	cout << "back() : " << vec.back() << endl;
+	cout << "front() : " << vec.front() << endl;
 
+	cout << "---resize Test---" << endl;
+	vec.resize(100);
+	cout << "vec.resize(100) " << endl;
+	cout << "size		: " << vec.size() << endl;
+	cout << "capasity	: " << vec.capasity() << endl;
+
+	cout << "--- begin end (iterator) ---" << endl;
+	cout << "*vec.begin() : " << *vec.begin() << endl;
+	cout << "*vec.end() : " << *vec.end() << endl;
+
+	cout << "--- clear ---" << endl;
+	vec.clear();
+	cout << "모든 값을 초기화 하지만 capasity는 그대로" << endl;
+	cout << "size		: " << vec.size() << endl;
+	cout << "capasity	: " << vec.capasity() << endl;
+	cout << "vec.empty() : " << vec.empty() << endl;
+
+	cout << "--- reserve ---" << endl;
+	cout << "vec.reserve(50)" << endl;
+	vec.reserve(50);
+	cout << "size		: " << vec.size() << endl;
+	cout << "capasity	: " << vec.capasity() << endl;
 	return 0;
 }
 
