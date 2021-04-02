@@ -1,9 +1,12 @@
-#include "LinkedList.h"
 #include <iostream>
 #include <time.h>
 #include <string>
-#include "Vector.h"
 #include <vector>
+#include "LinkedList.h"
+#include "Vector.h"
+#include "Stack.h"
+#include "Queue.h"
+#include <queue>
 using namespace std;
 
 typedef struct _tagStudent
@@ -33,47 +36,68 @@ bool StudentSort(const STUDENT& s, const STUDENT& s2)
 	return false;
 }
 
+
+void StackTest();
+void VectorTest();
 void LinkedTest();
+void QueueTest();
 int main()
 {
-	/*
-	a.back;
-	a.begin;
-	a.capacity;
-	a.cbegin;
-	a.cend;
-	a.clear;
-	a.crbegin;
-	a.crend;
-	a.data;
-	a.emplace;
-	a.emplace_back;
-	a.empty;
-	a.end;
-	a.erase;
-	a.front;
-	a.insert;
-	a.max_size;
-	a.pop_back;
-	a.push_back;
-	a.rbegin;
-	a.rend;
-	a.reserve;
-	a.resize;
-	a.size;
-	a.swap*/;
+	//StackTest();
+	QueueTest();
+	return 0;
+}
 
+void QueueTest()
+{
+	Queue<int> q;
 
+	cout << "empty: " << q.isEmpty() << endl;
+
+	cout << "push 5  push 10 " << endl;
+	q.Enqueue(5);
+	q.Enqueue(10);
+	cout << "front: " << q.front() << endl;
+	cout << "front: " << q.front() << endl;
+	cout << "empty: " << q.isEmpty() << endl;
+	cout << "size : " << q.size() << endl;
+	cout << "Deque: " << q.Dequeue() << endl;
+	cout << "front: " << q.front() << endl;
+	cout << "Deque: " << q.Dequeue() << endl;
+	cout << "front: " << q.front() << endl;
+	cout << "size : " << q.size() << endl;
+	cout << "empty: " << q.isEmpty() << endl;
+}
+
+void StackTest()
+{
+	CStack<int> stack;
+	stack.push(5);
+	cout << "isEmpty : " << stack.isEmpty() << endl;
+	cout << "peek : " << stack.peek() << endl;
+	stack.push(10);
+	cout << "peek : " << stack.peek() << endl;
+	cout << "pop : " << stack.pop() << endl;
+	cout << "peek : " << stack.peek() << endl;
+	cout << "pop : " << stack.pop() << endl;
+	cout << "peek : " << stack.peek() << endl;
+	cout << "pop : " << stack.pop() << endl;
+	cout << "isEmpty : " << stack.isEmpty() << endl;
+
+}
+void VectorTest()
+{
 	Vector<int> vec;
-	
+
+	cout << "vec.push_back(5); 뒤에 5를 추가" << endl;
+	cout << "vec.push_front(9);  앞에 9를 추가 (vec.size()만큼 이동시켜야함)" << endl;
 	vec.push_back(9);
 	vec.push_front(1);
-
 	cout << "vec.at(0) : " << vec.at(0) << endl;
-	cout << endl << endl;
 	cout << "size		: " << vec.size() << endl;
 	cout << "capasity	: " << vec.capasity() << endl;
 
+	cout << endl << endl;
 	// 초기화 후 2로 5칸을 만든다.
 	cout << "vec.assign(5,2) - 초기화 후 resize로 5칸을 2로 초기화한다." << endl;
 	vec.assign(5, 2);
@@ -120,10 +144,7 @@ int main()
 	vec.reserve(50);
 	cout << "size		: " << vec.size() << endl;
 	cout << "capasity	: " << vec.capasity() << endl;
-	return 0;
 }
-
-
 void LinkedTest()
 {
 	LinkedList<STUDENT> tStudentList;

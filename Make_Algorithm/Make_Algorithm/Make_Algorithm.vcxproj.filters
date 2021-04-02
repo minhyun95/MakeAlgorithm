@@ -19,6 +19,9 @@
     <Filter Include="소스 파일\02. 자료구조 구현">
       <UniqueIdentifier>{bbb075a5-3761-49c2-b1b0-e5702a7f2dc6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\03. 자료구조 예제">
+      <UniqueIdentifier>{e624fef1-ba07-40e2-a870-1a870320fc18}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BubbleSort.cpp">
@@ -36,12 +39,27 @@
     <ClCompile Include="벡터와 리스트 장단점.cpp">
       <Filter>소스 파일\02. 자료구조 구현</Filter>
     </ClCompile>
+    <ClCompile Include="unordered_map_예제.cpp">
+      <Filter>소스 파일\03. 자료구조 예제</Filter>
+    </ClCompile>
+    <ClCompile Include="set, map, unorederd정리.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="HashTable.cpp">
+      <Filter>소스 파일\03. 자료구조 예제</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LinkedList.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Vector.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Stack.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Queue.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

@@ -2,12 +2,12 @@
 
 using namespace std;
 
-void QuickSort(int arr[], int end);
+void BubbleSort(int arr[], int end);
 
 int main()
 {
 	int iArr[5] = { 5,4,3,2,1 };
-	QuickSort(iArr, sizeof(iArr) / sizeof(int) );
+	BubbleSort(iArr, sizeof(iArr) / sizeof(int) );
 
 	for (int i = 0; i < sizeof(iArr) / sizeof(int); i++)
 	{
@@ -15,7 +15,7 @@ int main()
 	}
 }
 
-void QuickSort(int arr[], int end)
+void BubbleSort(int arr[], int end)
 {
 	if (end == 1)
 		return;
@@ -29,5 +29,5 @@ void QuickSort(int arr[], int end)
 			arr[j - 1] = temp;
 		}
 	}
-	QuickSort(arr, end - 1);
+	BubbleSort(arr, end - 1);
 }
