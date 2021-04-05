@@ -5,7 +5,7 @@
 #include "MergeSort.h"
 #include "RadixSort.h"
 
-int iArr[1000] = { };
+int iArr[100] = { };
 
 void BubbleTest();
 void QuickTest();
@@ -19,7 +19,7 @@ int main()
 {
 	srand(unsigned(time(NULL)));
 	RandomSwap(iArr, sizeof(iArr) / sizeof(int));
-	RadixTest();
+	MergeTest();
 }
 
 
