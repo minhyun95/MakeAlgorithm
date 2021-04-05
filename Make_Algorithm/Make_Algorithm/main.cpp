@@ -19,6 +19,7 @@ void StackTest();
 void VectorTest();
 void LinkedTest();
 void QueueTest();
+void HeapTest();
 void TreeTest();
 int main()
 {
@@ -47,6 +48,30 @@ void QueueTest()
 	cout << "size : " << q.size() << endl;
 	cout << "empty: " << q.isEmpty() << endl;
 }
+void HeapTest()
+{
+	Heap hp;
+	hp.HeapDelete();
+	hp.HeapPush(5);
+	hp.HeapPush(10);
+	hp.HeapPush(12);
+	hp.HeapPush(18);
+	hp.HeapPush(24);
+	hp.HeapPush(30);
+	cout << "1" << endl;
+	hp.ShowHeap();
+	cout << "2" << endl;
+	cout << "Delete : " << hp.HeapDelete() << endl;
+	cout << "Delete : " << hp.HeapDelete() << endl;
+	cout << "Delete : " << hp.HeapDelete() << endl;
+	cout << "3" << endl;
+	hp.ShowHeap();
+	cout << "4" << endl;
+
+}
+
+
+
 void StackTest()
 {
 	CStack<int> stack;
