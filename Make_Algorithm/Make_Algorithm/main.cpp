@@ -1,26 +1,4 @@
-#include <iostream>
-#include <time.h>
-#include <string>
-#include <vector>
-#include "LinkedList.h"
-#include "Vector.h"
-#include "Stack.h"
-#include "Queue.h"
-#include <queue>
-using namespace std;
-
-typedef struct _tagStudent
-{
-	string strName;
-	int		iNumber;
-	int		iKor;
-	int		iEng;
-	int		iMath;
-	int		iSum;
-	float	fAvg;
-
-
-}STUDENT, *PSTUDENT;
+#include "Headers.h"
 
 bool StudentSort(const STUDENT& s, const STUDENT& s2)
 {
@@ -41,10 +19,11 @@ void StackTest();
 void VectorTest();
 void LinkedTest();
 void QueueTest();
+void TreeTest();
 int main()
 {
-	//StackTest();
-	QueueTest();
+	TreeTest();
+
 	return 0;
 }
 
@@ -68,7 +47,6 @@ void QueueTest()
 	cout << "size : " << q.size() << endl;
 	cout << "empty: " << q.isEmpty() << endl;
 }
-
 void StackTest()
 {
 	CStack<int> stack;
@@ -193,4 +171,34 @@ void LinkedTest()
 		cout << "총 점수 : " << (*iter).iSum << endl;
 		cout << "평균 점수 : " << (*iter).fAvg << endl;
 	}
+}
+
+void TreeTest()
+{
+	BTreeNode* bt1 = MakeBTreeNode();
+	BTreeNode* bt2 = MakeBTreeNode();
+	BTreeNode* bt3 = MakeBTreeNode();
+	BTreeNode* bt4 = MakeBTreeNode();
+
+	SetData(bt1, 1); // bt1에 1 저장
+	SetData(bt2, 2); // bt1에 2 저장
+	SetData(bt3, 3); // bt1에 3 저장
+	SetData(bt4, 4); // bt1에 4 저장
+
+	MakeLeftSubTree(bt1, bt2);		// bt2를 bt1의 왼쪽 자식 노드로
+	MakeRightSubTree(bt1, bt3);		// bt3를 bt1의 오른쪽 자식 노드로
+	MakeLeftSubTree(bt2, bt4);		// bt4를 bt2의 왼쪽 자식 노드로
+
+	// 자식 출력
+	////bt1의 왼쪽 자식 노드의 데이터 출력
+	//printf("%d \n", GetData(GetLeftSubTree(bt1)));
+
+	//// bt2의 왼쪽 자식 노드의 왼쪽 자식 노드의 데이터 출력
+	//printf("%d \n", GetData(GetLeftSubTree(GetLeftSubTree(bt1))));
+
+	InorderTraverse(bt1, ShowData);
+	cout << "\n";
+	PreorderTraverse(bt1, ShowData);
+	cout << "\n";
+	PostorderTraverse(bt1, ShowData);
 }

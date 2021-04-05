@@ -22,45 +22,72 @@
     <Filter Include="소스 파일\03. 자료구조 예제">
       <UniqueIdentifier>{e624fef1-ba07-40e2-a870-1a870320fc18}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\01. 알고리즘 구현\헤더파일">
+      <UniqueIdentifier>{e5fa524f-6e4d-4cb0-b5be-e1281ab22464}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\02. 자료구조 구현\헤더파일">
+      <UniqueIdentifier>{9625625d-e853-4c8e-afb3-99ae7d54d717}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\04.">
+      <UniqueIdentifier>{c50ee039-acb6-4d6b-add4-c5a463fd02ad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BubbleSort.cpp">
-      <Filter>소스 파일\01. 알고리즘 구현</Filter>
-    </ClCompile>
-    <ClCompile Include="QuickSort.cpp">
-      <Filter>소스 파일\01. 알고리즘 구현</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>소스 파일\02. 자료구조 구현</Filter>
-    </ClCompile>
-    <ClCompile Include="메모리릭 검사방법.cpp">
-      <Filter>소스 파일\02. 자료구조 구현</Filter>
-    </ClCompile>
-    <ClCompile Include="벡터와 리스트 장단점.cpp">
       <Filter>소스 파일\02. 자료구조 구현</Filter>
     </ClCompile>
     <ClCompile Include="unordered_map_예제.cpp">
       <Filter>소스 파일\03. 자료구조 예제</Filter>
     </ClCompile>
-    <ClCompile Include="set, map, unorederd정리.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="HashTable.cpp">
+      <Filter>소스 파일\03. 자료구조 예제</Filter>
+    </ClCompile>
+    <ClCompile Include="main_algo.cpp">
+      <Filter>소스 파일\01. 알고리즘 구현</Filter>
+    </ClCompile>
+    <ClCompile Include="벡터와 리스트 장단점.cpp">
+      <Filter>소스 파일\03. 자료구조 예제</Filter>
+    </ClCompile>
+    <ClCompile Include="메모리릭 검사방법.cpp">
+      <Filter>소스 파일\03. 자료구조 예제</Filter>
+    </ClCompile>
+    <ClCompile Include="set, map, unorederd정리.cpp">
       <Filter>소스 파일\03. 자료구조 예제</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Headers.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="BubbleSort.h">
+      <Filter>소스 파일\01. 알고리즘 구현\헤더파일</Filter>
+    </ClInclude>
+    <ClInclude Include="QuickSort.h">
+      <Filter>소스 파일\01. 알고리즘 구현\헤더파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MergeSort.h">
+      <Filter>소스 파일\01. 알고리즘 구현\헤더파일</Filter>
+    </ClInclude>
+    <ClInclude Include="RadixSort.h">
+      <Filter>소스 파일\01. 알고리즘 구현\헤더파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Default.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
     <ClInclude Include="LinkedList.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Stack.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>소스 파일\02. 자료구조 구현\헤더파일</Filter>
     </ClInclude>
     <ClInclude Include="Queue.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>소스 파일\02. 자료구조 구현\헤더파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Stack.h">
+      <Filter>소스 파일\02. 자료구조 구현\헤더파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>소스 파일\02. 자료구조 구현\헤더파일</Filter>
+    </ClInclude>
+    <ClInclude Include="BinaryTree.h">
+      <Filter>소스 파일\02. 자료구조 구현\헤더파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

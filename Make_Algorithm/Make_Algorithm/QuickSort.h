@@ -1,20 +1,9 @@
-#include <iostream>
-#include <vector>
-using namespace std;
+#pragma once
 
-void QuickSort(int arr[],int start, int end);
+#ifndef __QUICHSORT_H__
+#define __QUICHSORT_H__
 
-int main()
-{
-	int iArr[5] = { 4,1,5,2,3 };
-	QuickSort(iArr, 0, 5 - 1);
-
-	for (int i = 0; i < 5; i++)
-	{
-		cout << iArr[i] << " ";
-	}
-}
-
+static int QuickSortTimes = 0;
 void QuickSort(int arr[], int start, int end)
 {
 	if (start >= end)
@@ -22,7 +11,7 @@ void QuickSort(int arr[], int start, int end)
 	int i = start;
 	int j = end;
 	int pivot = arr[(i + j) / 2];
-
+	++QuickSortTimes;
 
 	while (i <= j)
 	{
@@ -40,3 +29,4 @@ void QuickSort(int arr[], int start, int end)
 	QuickSort(arr, start, j);
 	QuickSort(arr, i, end);
 }
+#endif // !__QUICHSORT_H__

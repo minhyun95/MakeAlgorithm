@@ -1,20 +1,9 @@
-#include <iostream>
+#pragma once
 
-using namespace std;
+#ifndef __BUBBLESORT_H__
+#define __BUBBLESORT_H__
 
-void BubbleSort(int arr[], int end);
-
-int main()
-{
-	int iArr[5] = { 5,4,3,2,1 };
-	BubbleSort(iArr, sizeof(iArr) / sizeof(int) );
-
-	for (int i = 0; i < sizeof(iArr) / sizeof(int); i++)
-	{
-		cout << iArr[i] << endl;
-	}
-}
-
+static long long BubbleSortTimes = 0;
 void BubbleSort(int arr[], int end)
 {
 	if (end == 1)
@@ -22,6 +11,7 @@ void BubbleSort(int arr[], int end)
 	for (int j = 1; j < end; j++)
 	{
 		// 가장 큰 수를 가장 뒤로 보낸다.
+		++BubbleSortTimes;
 		if (arr[j] < arr[j - 1])
 		{
 			int temp = arr[j];
@@ -31,3 +21,4 @@ void BubbleSort(int arr[], int end)
 	}
 	BubbleSort(arr, end - 1);
 }
+#endif // !__BUBBLESORT_H__
