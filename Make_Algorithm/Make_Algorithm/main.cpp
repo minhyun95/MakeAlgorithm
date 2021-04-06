@@ -15,15 +15,17 @@ bool StudentSort(const STUDENT& s, const STUDENT& s2)
 }
 
 
-void StackTest();
-void VectorTest();
-void LinkedTest();
-void QueueTest();
-void HeapTest();
-void TreeTest();
+/*	스택 테스트			*/void StackTest();
+/*	벡터 테스트			*/void VectorTest();
+/*	링크드리스트 테스트	*/void LinkedTest();
+/*	큐 테스트			*/void QueueTest();
+/*	힙 테스트			*/void HeapTest();
+/*	트리 테스트			*/void TreeTest();
+/*	그래프 테스트			*/void GraphTest();
+
 int main()
 {
-	TreeTest();
+	GraphTest();
 
 	return 0;
 }
@@ -226,4 +228,24 @@ void TreeTest()
 	PreorderTraverse(bt1, ShowData);
 	cout << "\n";
 	PostorderTraverse(bt1, ShowData);
+}
+
+void GraphTest()
+{
+	enum { A, B, C, D, E, F, G, H, I, J };
+	CGraph graph;
+	graph.GraphInit(10);
+	graph.AddEdge(A, B);
+	graph.AddEdge(A, D);
+	graph.AddEdge(B, C);
+	graph.AddEdge(D, C);
+	graph.AddEdge(D, E);
+	graph.AddEdge(E, F);
+	graph.AddEdge(E, G);
+
+	graph.ShowGraphEdgeInfo();
+	graph.DFSShowGraphVertex(A);
+	graph.DFSShowGraphVertex(C);
+	graph.DFSShowGraphVertex(E);
+	graph.DFSShowGraphVertex(G);
 }

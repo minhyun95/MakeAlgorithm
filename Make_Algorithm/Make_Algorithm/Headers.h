@@ -14,6 +14,7 @@
 #include <queue>
 #include "BinaryTree.h"
 #include "Heap.h"
+#include "Graph.h"
 typedef struct _tagStudent
 {
 	string strName;
