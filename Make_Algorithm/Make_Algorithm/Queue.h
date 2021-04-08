@@ -94,7 +94,7 @@ public :
 
 		++m_iSize;
 	}
-	T& Dequeue()
+	T Dequeue()
 	{
 		if (isEmpty())
 		{
@@ -114,9 +114,7 @@ public :
 		if (isEmpty())
 		{
 			// 에러 발생해야 정상 현재는 테스트를 위해 return 0
-			NODE newNode;
-			newNode.m_Data = INT_MAX;
-			return newNode.m_Data;
+			assert(false);
 		}
 
 		return m_pBegin->m_Data;

@@ -86,7 +86,7 @@ public:
 		newNODE->m_pPrev = m_pPeek->m_pPrev;
 		m_pPeek->m_pPrev = newNODE;
 	}
-	T& pop()
+	T pop()
 	{
 		if (isEmpty())
 		{

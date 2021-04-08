@@ -110,15 +110,15 @@ private:
 		m_inumV = 0;
 	}
 	// 정점의 방문 진행
-	int VisitVertex(int visitV)
+	bool VisitVertex(int visitV)
 	{
 		if (m_pVisit[visitV] == 0) // 첫 방문일때만 
 		{
 			m_pVisit[visitV] = 1;  // 이미 방문한 것을 기록
 			printf("%c\t", static_cast<char>(visitV + 65));
-			return 1;  // 방문 성공
+			return true;  // 방문 성공
 		}
-		return 0;  // 이미 방문한 곳
+		return false;  // 이미 방문한 곳
 	}
 
 	// 재귀적으로 실행해서 방문하지 않은 노드 탐색

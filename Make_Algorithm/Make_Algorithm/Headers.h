@@ -15,6 +15,8 @@
 #include "BinaryTree.h"
 #include "Heap.h"
 #include "Graph.h"
+#include "HashTable_Chaning.h"
+#include "HashTable_Array.h"
 typedef struct _tagStudent
 {
 	string strName;

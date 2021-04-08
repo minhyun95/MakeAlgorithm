@@ -22,11 +22,19 @@ bool StudentSort(const STUDENT& s, const STUDENT& s2)
 /*	힙 테스트			*/void HeapTest();
 /*	트리 테스트			*/void TreeTest();
 /*	그래프 테스트			*/void GraphTest();
+/*	해시테이블 테스트		*/void HashTable_TEST();
+/*	해시어레이 테스트		*/void HashArray_TEST();
 
+typedef int(*HashFunc)(int key);
+int a(int k)
+{
+	return k;
+}
+
+HashFunc* b = (HashFunc*)a;
 int main()
 {
-	GraphTest();
-
+	HashArray_TEST();
 	return 0;
 }
 
@@ -248,4 +256,41 @@ void GraphTest()
 	graph.DFSShowGraphVertex(C);
 	graph.DFSShowGraphVertex(E);
 	graph.DFSShowGraphVertex(G);
+}
+
+
+void HashTable_TEST()
+{
+	HashTable tb;
+	tb.Initialize(100, hash_func);
+	for (int i = 0; i < 10; i++)
+	{
+		tb.Insert(i);
+	}
+	tb.Search(5);
+	tb.Search(11);
+	tb.Delete(3);
+	tb.Delete(4);
+	tb.Delete(5);
+	tb.Delete(6);
+
+}
+
+void HashArray_TEST()
+{
+	HashTableArray htA(100);
+
+	for (int i = 0; i < 25; i++)
+	{
+		htA.Insert(i + rand() % 1000, rand() % 100, rand() % 100);
+	}
+
+	htA.Search(1);
+	htA.Delete(1);
+	cout <<	htA.Search(1) << endl;
+
+	htA.ShowAll();
+	cout << endl;
+	cout << endl;
+	htA.Show_Frequency();
 }
