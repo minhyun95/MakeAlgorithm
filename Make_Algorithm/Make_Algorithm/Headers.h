@@ -17,6 +17,7 @@
 #include "Graph.h"
 #include "HashTable_Chaning.h"
 #include "HashTable_Array.h"
+#include "Tree_Complete.h"
 typedef struct _tagStudent
 {
 	string strName;

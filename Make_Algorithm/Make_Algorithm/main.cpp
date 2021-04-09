@@ -20,10 +20,11 @@ bool StudentSort(const STUDENT& s, const STUDENT& s2)
 /*	링크드리스트 테스트	*/void LinkedTest();
 /*	큐 테스트			*/void QueueTest();
 /*	힙 테스트			*/void HeapTest();
-/*	트리 테스트			*/void TreeTest();
+/*	트리 테스트			*/void TreeTest();  // 윤성우 교재 버전
 /*	그래프 테스트			*/void GraphTest();
 /*	해시테이블 테스트		*/void HashTable_TEST();
 /*	해시어레이 테스트		*/void HashArray_TEST();
+/*	이진탐색트리 테스트	*/void BTree_Test();
 
 typedef int(*HashFunc)(int key);
 int a(int k)
@@ -34,7 +35,7 @@ int a(int k)
 HashFunc* b = (HashFunc*)a;
 int main()
 {
-	HashArray_TEST();
+	BTree_Test();
 	return 0;
 }
 
@@ -293,4 +294,16 @@ void HashArray_TEST()
 	cout << endl;
 	cout << endl;
 	htA.Show_Frequency();
+}
+
+void BTree_Test()
+{
+	CTree_Binary CTree;
+	for (int i = 0; i < 16; i++)
+	{
+		int input = rand() % 16 + 1;
+		cout << "input : " << input << endl;
+		CTree.BT_Insert(input);
+	}
+	CTree.Output();
 }

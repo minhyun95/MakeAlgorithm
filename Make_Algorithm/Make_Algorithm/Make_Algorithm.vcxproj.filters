@@ -98,5 +98,8 @@
     <ClInclude Include="HashTable_Array.h">
       <Filter>소스 파일\02. 자료구조 구현\헤더파일</Filter>
     </ClInclude>
+    <ClInclude Include="Tree_Complete.h">
+      <Filter>소스 파일\02. 자료구조 구현\헤더파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
