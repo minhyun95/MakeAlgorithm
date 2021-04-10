@@ -35,7 +35,7 @@ int a(int k)
 HashFunc* b = (HashFunc*)a;
 int main()
 {
-	BTree_Test();
+	HashArray_TEST();
 	return 0;
 }
 
@@ -301,9 +301,16 @@ void BTree_Test()
 	CTree_Binary CTree;
 	for (int i = 0; i < 16; i++)
 	{
-		int input = rand() % 16 + 1;
+		int input = i;
 		cout << "input : " << input << endl;
 		CTree.BT_Insert(input);
 	}
+	CTree.Output();
+	cout << "5삭제 " << endl;
+	CTree.Delete(5);
+	cout << "12삭제 " << endl;
+	CTree.Delete(12);
+	cout << "15삭제 " << endl;
+	CTree.Delete(15);
 	CTree.Output();
 }

@@ -141,40 +141,9 @@ public:
 
 		return false;
 	}
-	void BT_Delete(int _Deletedata)
+	void Delete(int num)
 	{
-		PNODE ParentNode;
-		PNODE NowNode = m_Root;
-		PNODE LeftChildNode;
-		PNODE RightChildNode;
-		while (NowNode != nullptr)
-		{
-			if (NowNode->m_Data == _Deletedata) /* 찾았다 */
-			{
-				if (NowNode->m_LeftSubTree)
-				{
-					NowNode->m_Data = NowNode->m_LeftSubTree->m_Data;
-					LeftChildNode = NowNode->m_LeftSubTree;
-					RightChildNode = NowNode->m_RightSubTree;
-					if (LeftChildNode->m_LeftSubTree)
-						NowNode->m_LeftSubTree = LeftChildNode->m_LeftSubTree;
-					if (RightChildNode->m_LeftSubTree)
-						NowNode->m_RightSubTree = RightChildNode->m_RightSubTree;
-				}
-
-				return;
-			}
-			if (NowNode->m_Data > _Deletedata)
-			{
-				ParentNode = NowNode;
-				NowNode = NowNode->m_LeftSubTree;
-			}
-			else
-			{
-				ParentNode = NowNode;
-				NowNode = NowNode->m_RightSubTree;
-			}
-		}
+		m_Root = BT_Delete(m_Root, num);
 	}
 	void Output()
 	{
@@ -183,6 +152,76 @@ public:
 			m_Root->InOrder_Cout();
 		}
 	}
+
+private:
+	PNODE BT_Delete(PNODE root,int _Deletedata)
+	{
+		PNODE p = root;
+		PNODE parent = nullptr;
+		while ((p != nullptr) && (p->m_Data != _Deletedata))
+		{
+			parent = p;
+			if (p->m_Data < _Deletedata)
+				p = p->m_RightSubTree;
+			else
+				p = p->m_LeftSubTree;
+
+			if (p == nullptr)
+			{
+				return root;
+			}
+		}
+
+		if (p->m_LeftSubTree == nullptr && p->m_RightSubTree == nullptr)
+		{
+			if (parent == nullptr) /* 루트노트가 삭제되는 경우 */
+				root = nullptr;
+			else
+			{
+				if (parent->m_LeftSubTree == p)
+					parent->m_LeftSubTree = nullptr;
+				else
+					parent->m_RightSubTree = nullptr;
+			}
+		}
+		else if (p->m_LeftSubTree == nullptr || p->m_RightSubTree == nullptr)
+		{
+			PNODE child = (p->m_LeftSubTree != nullptr) ? p->m_LeftSubTree : p->m_RightSubTree;
+
+			if (parent == nullptr) /* 루트노트가 삭제되는 경우 */
+				root = child;
+			else
+			{
+				if (parent->m_LeftSubTree == p)
+					parent->m_LeftSubTree = child;
+				else
+					parent->m_RightSubTree = child;
+			}
+		}
+		else 
+		{
+			PNODE succ_parent = p;
+			PNODE succ = p->m_RightSubTree;
+
+			while (succ->m_LeftSubTree != nullptr)
+			{
+				succ_parent = succ;
+				succ = succ->m_LeftSubTree;
+			}
+			p->m_Data = succ->m_Data;
+			if(succ_parent->m_LeftSubTree == succ)
+				succ_parent->m_LeftSubTree = succ->m_RightSubTree;
+			else
+				succ_parent->m_RightSubTree = succ->m_RightSubTree;
+
+			p = succ;
+		}
+
+
+		delete p;
+		return root;
+	}
+
 };
 
 #endif // !__TREE_COMPLETE_H__
